@@ -1,0 +1,113 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "Myths & Forges API",
+      "version": "1.0.0",
+      "description": "API for Myths & Forges"
+    },
+    "servers": [
+      {
+        "url": "http://localhost:5000"
+      }
+    ],
+    "paths": {
+      "/sheets": {
+        "get": {
+          "summary": "Fetch all sheets",
+          "responses": {
+            "200": {
+              "description": "Successfull",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/models/sheet.js"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "summary": "Create new sheet",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                    "$ref": "#/models/sheet.js"
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Successfull",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/models/sheet.js"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "models": {
+        "type": "object",
+        "properties": {
+            "_id": {
+                "type": "string"
+            },
+            "name": {
+                "type": "string"
+            },
+            "profession": {
+                "type": "string"
+            },
+            "description": {
+                "type": "string"
+            },
+            "creator": {
+                "type": "string"
+            },
+            "age": {
+                "type": "string"
+            },
+            "home": {
+                "type": "string"
+            },
+            "isPublic": {
+                "type": "boolean"
+            },
+            "extraInfo": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "title": {
+                      "type": "string"
+                    },
+                    "value": {
+                      "type": "string"
+                    }
+                  }
+                }
+            },
+            "tags": {
+                "type": "string"
+            },
+            "selectedFile": {
+                "type": "string"
+            },
+            "createdAt": {
+                "type": "string",
+                "format": "date-time"
+            }
+        }
+    }
+  }
